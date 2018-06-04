@@ -10,11 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('admin')->middleware('auth')->group(function(){
+     Route::get('main','admin\view\IndexController@main')->name('main');
+     Route::get('list','admin\view\ArticleController@list')->name('list');
+     Route::resource('article','admin\api\ArticleController');
+     Route::resource('articlecat','admin\api\ArticleCatController');
+
+});
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::any('/main','StaticPageController@main');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 
