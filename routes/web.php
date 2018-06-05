@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//后台
 Route::prefix('admin')->middleware('auth')->group(function(){
      Route::get('main','admin\view\IndexController@main')->name('main');
      Route::get('list','admin\view\ArticleController@list')->name('list');
@@ -21,16 +23,18 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//前端路由
+Route::get('/','StaticPageController@home')->name('home');
+Route::get('/help', 'StaticPagesController@help')->name('help');
+Route::get('/about', 'StaticPagesController@about')->name('about');
 
-Route::any('/main','StaticPageController@main');
+Route::get('/signup','UsersController@create')->name('signup');
+
+
 
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
