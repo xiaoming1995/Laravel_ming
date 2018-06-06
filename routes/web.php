@@ -25,11 +25,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
 //前端路由
 Route::get('/','StaticPageController@home')->name('home');
-Route::get('/help', 'StaticPagesController@help')->name('help');
-Route::get('/about', 'StaticPagesController@about')->name('about');
+Route::get('/help', 'StaticPageController@help')->name('help');
+Route::get('/about', 'StaticPageController@about')->name('about');
 
 Route::get('/signup','UsersController@create')->name('signup');
-
+Route::resource('users','UsersController');
 
 
 
