@@ -6,11 +6,15 @@
   </head>
   <body>
     @include('layouts.__header')
-      
+
     <div class="container">
-      @include('shared._messages')
-      @yield('content')
-      @include('layouts.__footer')
-    </div>    
+      <div class="col-md-offset-1 col-md-10">
+        @include('shared._messages')
+        @yield('content')
+        @include('layouts.__footer')
+      </div>
+    </div>
+
+    <script src="/js/app.js"></script>
   </body>
 </html>
